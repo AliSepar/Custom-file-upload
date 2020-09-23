@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom btn</title>
+
+    <style media="screen">
+
+        #custom-button{
+            padding: 10px;
+            color:white;
+            font-weight: 400;
+            background-color: #009578;
+            border-radius: 10px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        #custom-button:hover{
+                background-color: #00b28f;
+                font-weight: 500;
+        }
+        #custom-text{
+            margin-left: 10px;
+            font-family: sans-serif;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <form action="get" enctype="multipart/form-data">
+            <div>
+                <input type="file" id="real-file"  name="" hidden>
+                <button type="button" id="custom-button">CHOOSE A FILE</button>
+                <span for="" id="custom-text">No file chosen, yet</span>
+            </div>
+        </form>
+
+    </div>
+
+
+</body>
+
+        <script type="text/javascript">
+        //getting the values
+                const realfilebtn = document.getElementById("real-file");
+                const custombtn   = document.getElementById("custom-button");
+                const customtxt   = document.getElementById("custom-text");
+
+                    custombtn.addEventListener('click',function () {
+                        realfilebtn.click();
+                    });
+                    realfilebtn.addEventListener('change',function () {
+                        if(realfilebtn.value){
+                            customtxt.innerHTML = realfilebtn.value.match(/[\/\\]([\w\d\s\.\=\(\)]+)$/)[1];
+                        }else{
+                            customtxt.innerHTML = "No file chosen, yet";
+                        }
+                    });
+
+
+        </script>
+</html>
